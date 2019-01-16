@@ -9,3 +9,14 @@ CREATE TABLE IF NOT EXISTS flights (
     flightNo VARCHAR,
     userId INTEGER REFERENCES user (id)
 )
+
+CREATE TABLE IF NOT EXISTS airportcodes (
+    code VARCHAR, 
+    lat INTEGER, 
+    lon INTEGER, 
+    name VARCHAR, 
+    city VARCHAR, 
+    state VARCHAR, 
+    country VARCHAR, 
+    icao VARCHAR
+)
