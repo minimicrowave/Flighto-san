@@ -1,6 +1,9 @@
 module.exports = (db) => {
 
 
+    const redirect = (request, response) => {
+        response.redirect('/home')
+    }
     const home = (request, response) => {
         // let loggedin = request.cookies['loggedin'];
         // let user = request.cookies['user'];
@@ -13,10 +16,10 @@ module.exports = (db) => {
         // }
     }
 
-
     // Export controller functions as a module
     return {
-        home,
+        redirect, 
+        home
     };
 
 }

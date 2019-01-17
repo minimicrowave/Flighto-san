@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS flights (
     id SERIAL PRIMARY KEY,
     flightNo VARCHAR,
-    userId INTEGER REFERENCES user (id)
-)
+    userId INTEGER REFERENCES users (id)
+);
 
 CREATE TABLE IF NOT EXISTS airportcodes (
     code VARCHAR, 
