@@ -26,8 +26,9 @@ app.engine('jsx', reactEngine);
 const db = require('./db');
 require('./Routes/routes')(app, db);
 
+const fs = require('fs');
 
-const server = app.listen(3066, () => console.log('~~~ Tuning in to the waves of port 3000 ~~~'));
+const server = app.listen(3000, () => console.log('~~~ Tuning in to the waves of port 3000 ~~~'));
 
 let onClose = function(){
 
@@ -38,30 +39,17 @@ let onClose = function(){
 };
 
 
-function x(queryText) {
-  pool.query(queryText, (err, result) => {
-    if (err) {
-      console.log("Oh no, error in POST / : ", err);
-    } else {
-      response.redirect('/artist')
-      ;
-    }
-  })
-}
 
-const fs = require('fs');
-
+// read json and console.logs as queryTexts to be seeded into psql
 fs.readFile('airports.json', (err, obj) => {
 
   let x = (JSON.parse(obj));
 
-  x.forEach(element => {
-    // console.log(`INSERT INTO airportcodes (code, lat, lon, name, city, state, country, icao) VALUES ('${element.code}', ${element.lat}, ${element.lon}, '${element.name}', '${element.city}', '${element.state}', '${element.country}', '${element.icao}')`)
-  })
+  // x.forEach(element => {
+  //   console.log(`INSERT INTO airportcodes (code, lat, lon, name, city, state, country, icao) VALUES ('${element.code}', ${element.lat}, ${element.lon}, '${element.name}', '${element.city}', '${element.state}', '${element.country}', '${element.icao}');`)
+  // })
   
 });
-
-
 
 
 

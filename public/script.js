@@ -1,6 +1,6 @@
 var openbutton = document.querySelector('.openbtn');
 
-openbutton.addEventListener('click', openNav);
+openbutton.addEventListener('click', closeNav);
 
 
 function openNav() {
