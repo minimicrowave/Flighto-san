@@ -11,11 +11,14 @@ render() {
         </head>
         <body>
         <nav className="navbar fixed-top navbar-light bg-light">
-          <a className="navbar-brand" href="#!">Flighto-San</a>
+            <a className="navbar-brand" href="/home">Flighto-San</a>
+            <span class="navbar-text">
+                <a href="#" class="btn btn-outline-secondary btn-sm logoutbtn">Logout</a>
+            </span>
         </nav>
         <main>
             <div id="mySidebar" className="sidebar">
-                <form name="flight" className="form-inline my-2 my-lg-0" method="POST" action="/home">
+                <form name="flight" className="form-inline my-2 my-lg-0" method="POST" action="/home/search">
                     <h4>Flighto-san, where's my flight?</h4>
                     <input name="flightNo" className="form-control flight" type="search" placeholder="Flight No."/>
                     <button id="submitbutton" className="btn btn-small btn-block btn-outline-light my-2 my-sm-0" type="submit"><img className="openbtnimg" src="https://images.vexels.com/media/users/3/132068/isolated/preview/f9bb81e576c1a361c61a8c08945b2c48-search-icon-by-vexels.png"/>  Search</button>
@@ -34,7 +37,7 @@ render() {
                 ⇌
                 </button>
             {this.props.children}
-                <p>sup ma bitches</p>
+          
             </div>
         </main>
             <script type="text/javascript" src="/script.js"/>

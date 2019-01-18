@@ -109,3 +109,13 @@ div.flightDest {
 	padding-left: 10px;
 	border-left: 1px solid rgb(70, 70, 70);
 }
+
+a.logoutbtn {
+	padding: 4px 30px;
+	background-color: #fff;
+}
+
+a.logoutbtn:hover {
+	background-color: #82befd;
+	border: 1px solid rgb(177, 175, 175);
+}

@@ -1,5 +1,6 @@
 var React = require("react");
 var Template = require("../views/template");
+var GoogleMaps = require("../views/map");
 
 class Results extends React.Component {
     render() {
@@ -9,7 +10,7 @@ class Results extends React.Component {
                     return (
                     <tr>
                         <td>
-                        <form className="flightadd" method="POST" action="#">
+                        <form className="flightadd" method="POST" action="search/maps">
                             <button name="flight" className="addButton" type="submit" value={eachFlight.icao24}>+</button>
                             <div className="flightNo">{eachFlight.callsign}</div>
                             <div className="flightDest">
@@ -25,7 +26,8 @@ class Results extends React.Component {
             var flights = (
                 <tr>
                     <td>
-                    Oh no, no flights found. Please try again.
+    
+                    Oh no, no result for this flight found. Please try again.
                 </td>
             </tr>)
 

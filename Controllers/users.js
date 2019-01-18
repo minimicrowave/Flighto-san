@@ -2,13 +2,34 @@ module.exports = (db) => {
 
 
     const redirect = (request, response) => {
-        response.redirect('/home')
+        let loggedin = request.cookies['loggedin'];
+
+        if (loggedin === undefined){
+            response.redirect('/login');
+        } else {
+            response.redirect('/home');
+
+        }
     }
+
+    const login = (request, response) => {
+        response.render('../views/login.jsx');
+    }
+
     const home = (request, response) => {
-        // let loggedin = request.cookies['loggedin'];
+        
         // let user = request.cookies['user'];
 
         // if (loggedin === undefined) {
+
+            let userid = 1;
+            let name = 'hi';
+            let maps = "";
+            let login = "true";
+            response.cookie('userid', userid);
+            response.cookie('name', name);
+            response.cookie('maps', maps);
+        
             response.render('../views/template.jsx');
             // response.send('hi!');
         // } else {
@@ -18,7 +39,8 @@ module.exports = (db) => {
 
     // Export controller functions as a module
     return {
-        redirect, 
+        redirect,
+        login, 
         home
     };
 

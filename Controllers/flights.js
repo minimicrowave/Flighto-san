@@ -27,7 +27,11 @@ module.exports = (db) => {
             axios.get(`https://minimicrowave:inyourdreams@opensky-network.org/api/flights/all?begin=${timeTwoHAgo}&end=${timeNow}`).then(result => {
                 results = result.data.find(element => {
                     // deletes all spaces
-                    var callsign = element.callsign.replace(/\s+/g, '')
+                    console.log(element);
+                    var callsign;
+                    if (callsign !== null){
+                        callsign = element.callsign.replace(/\s+/g, '');
+                    }
                     if (callsign=== flightNo.toUpperCase()) {
                         return element;
                     }
@@ -39,15 +43,30 @@ module.exports = (db) => {
                 });
             })
 
-
-
-        }
-
-
-        // Export controller functions as a module
-
+        }        
     }
+
+    const maps = (request, response) => {   
+        response.cookie('user', 1);
+        var icaoNo = (request.body.flight).replace(/\s+/g, '');
+        var user = request.cookies['user'];
+
+        axios.get(`https://minimicrowave:inyourdreams@opensky-network.org/api/tracks/all?icao24=${icaoNo}&time=0`).then(result => {
+            // console.log(result.data);
+                db.users.addFlights(icaoNo, user, (error, queryResult) => {
+                    console.log(queryResult.flightno);
+                    // var flights = response.cookie
+                })
+
+
+        })
+            
+        
+    }
+
+    // Export controller functions as a module
     return {
-        form
+        form,
+        maps
     };
 }

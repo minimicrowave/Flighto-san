@@ -3,8 +3,10 @@ module.exports = (app, db) => {
     const flights = require('../Controllers/flights.js')(db);
     
     app.get('/', users.redirect);
+    app.get('/login', users.login);
     app.get('/home', users.home);
 
-    app.post('/home', flights.form);
+    app.post('/home/search', flights.form);
+    app.post('/home/search/maps', flights.maps);
 
 }
