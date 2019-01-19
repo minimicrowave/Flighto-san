@@ -1,6 +1,6 @@
 var React = require("react");
 var Template = require("../views/template");
-var GoogleMaps = require("../views/map");
+// var GoogleMaps = require("../views/map");
 
 class Results extends React.Component {
     render() {

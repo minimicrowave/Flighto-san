@@ -7,11 +7,15 @@ render() {
         <head>
             <link rel="stylesheet" type="text/css" href="/style.css"/>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+            <link href="https://fonts.googleapis.com/css?family=Unica+One|Zilla+Slab|Open+Sans+Condensed:300" rel="stylesheet"></link>
             <meta charset="UTF-8"/>
         </head>
         <body>
-        <nav className="navbar fixed-top navbar-light bg-light">
-            <a className="navbar-brand" href="/home">Flighto-San</a>
+        <nav className="navbar fixed-top navbar-light bg-light topbar">
+            <a className="navbar-brand header" href="/home">
+            <img className="logo" src="https://static1.squarespace.com/static/5aec99592971146b8ee7df33/t/5aecbf89575d1f6cb17212eb/1525464980165/animat-paper-airplane-color.gif"/>
+                Flighto-San
+            </a>
             <span class="navbar-text">
                 <a href="#" class="btn btn-outline-secondary btn-sm logoutbtn">Logout</a>
             </span>

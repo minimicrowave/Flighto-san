@@ -1,7 +1,11 @@
 main {
 	position: relative;
-    top: 70px;
+    top: 100px;
     border-right: 1px solid rgb(158, 158, 158);
+}
+
+.topbar {
+	padding: 0 10px 0 0 !important;
 }
 
 .sidebar {
@@ -9,12 +13,12 @@ main {
 	width: 400px;
 	position: fixed;
 	z-index: 1;
-	top: 0;
+	top: 10px;
 	left: 0;
 	background-color: rgb(152, 185, 246);
 	overflow-x: hidden;
 	padding-top: 60px;
-	transition: 0.3s;
+	transition: 0.1s;
 	border-right: 3px solid #f1f1f1;
 }
 
@@ -118,4 +122,46 @@ a.logoutbtn {
 a.logoutbtn:hover {
 	background-color: #82befd;
 	border: 1px solid rgb(177, 175, 175);
+}
+
+.header {
+	font-family: "Unica One"
+}
+
+img.header {
+	width: 100%;
+	margin: 20px 0 10px 0;
+
+}
+
+div.login {
+	padding-left: 0;
+}
+
+a.link {
+	font-size: 13px;
+	margin-top: 5px;
+	margin-left: 2px;
+}
+
+a.link:hover {
+	text-decoration: none;
+}
+
+div.register {
+	padding: 0px;
+}
+
+input.register {
+	margin-bottom: 5px;
+}
+
+img.logo {
+	width: 50px;
+}
+
+h4 {
+	font-family: 'Open Sans Condensed'!important;
+	padding-left: 10px;
+	padding-bottom: 3px;
 }

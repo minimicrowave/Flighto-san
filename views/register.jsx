@@ -1,8 +1,8 @@
 var React = require("react");
 
-class Login extends React.Component {
+class SignUp extends React.Component {
     render() {
-    
+        
         return (
         <html>
         <head>
@@ -12,33 +12,29 @@ class Login extends React.Component {
             <meta charset="UTF-8"/>
         </head>
         <body>
-        
-        {(this.props.logintext) ? (<div class="alert alert-danger" role="alert">
-        <strong>Oh snap!</strong> Change a few things up and try again.
-     </div>) : null
-        }
-
+    
         <div className="d-flex justify-content-center">
-        <form name="login" method="POST" action="/home">
+        <form name="login" method="POST" action="/login">
             <div className="row">
-                <img className="header" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/133fe638228687.57599851b4546.gif"/>
+                <img className="header" src="https://media1.tenor.com/images/828db7fa083be1d3689fc8ea0935a8cb/tenor.gif?itemid=9148185"/>
             </div>
             <div className="row">
                 <h1 className="mx-auto header">Flighto-san</h1>
             </div>
              <div className="row">
-                <div className="col login">
-                <   input name="username" type="text" className="form-control" placeholder="Username"/>
+                <div className="col register">
+                    <input name="name" type="text" className="form-control register" placeholder="Name"/>
+                    <input name="username" type="text" className="form-control register" placeholder="Username"/>
+                    <input name="password" type="password" className="form-control register" placeholder="Password"/>                
                 </div>
-                <div className="col login">
-                    <input name="password" type="password" className="form-control" placeholder="Password"/>
-                </div>
-                <button className="btn btn-info logoutbtn">Submit</button>
             </div>
             <div className="row">
-            <a href="/register" className="text-info link">
-            No account yet? Click here to sign up with us today!
-            </a>
+                <a href="/login" className="text-info link">
+                Have an account? Login here!
+                </a>
+            </div>
+            <div className="row">
+                <button className="btn btn-info logoutbtn mx-auto">Submit</button>
             </div>
    
         </form>
@@ -50,4 +46,4 @@ class Login extends React.Component {
     }
 }
 
-module.exports = Login;
+module.exports = SignUp;

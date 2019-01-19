@@ -47,7 +47,6 @@ module.exports = (db) => {
     }
 
     const maps = (request, response) => {   
-        response.cookie('user', 1);
         var icaoNo = (request.body.flight).replace(/\s+/g, '');
         var user = request.cookies['user'];
 
