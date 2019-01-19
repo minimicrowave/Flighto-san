@@ -63,15 +63,27 @@ module.exports = (db) => {
     }
 
     const home = (request, response) => {
-        let userid = request.cookies['user'];
+        let userid = [request.cookies['userid']];
+        console.log(userid);
+        let loggedin = request.cookies['loggedin'];
 
-        if (loggedin === true) {
-        
-            response.render('../views/template.jsx');
-            // response.send('hi!');
+        if (loggedin === 'true') {
+            db.flights.checkFlights(userid, (error, queryResult) => {
+                let maps = JSON.stringify(queryResult);
+                response.cookie('maps', maps);
+                response.render('../views/template.jsx');
+            });
         } else {
             response.redirect("/login");
         }
+    }
+
+    const logout = (request, response) => {
+        response.clearCookie('loggedin');
+        response.clearCookie('maps');
+        response.clearCookie('userid');
+        
+        response.redirect('/login');
     }
 
     // Export controller functions as a module
@@ -81,7 +93,8 @@ module.exports = (db) => {
         registerpost,
         login,
         loginpost, 
-        home
+        home,
+        logout
     };
 
 }

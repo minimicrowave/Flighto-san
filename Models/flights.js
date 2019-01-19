@@ -2,10 +2,10 @@ module.exports = (dbPoolInstance) => {
 
     // `dbPoolInstance` is accessible within this function scope
     return {
-        addUsers: (userInfo, callback) => {
+        checkFlights: (userid, callback) => {
             // set up query
-            const queryString = 'INSERT INTO users (name, username, password) VALUES ($1, $2, $3) RETURNING *;';
-            const values = userInfo;
+            const queryString = 'SELECT * FROM flights WHERE userID = $1';
+            const values = userid;
             console.log(queryString, values);
 
             // execute query

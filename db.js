@@ -1,5 +1,6 @@
 const pg = require('pg');
 const users = require('./Models/users');
+const flights = require('./Models/flights');
 
 const configs = {
   user: 'Serene',
@@ -17,8 +18,8 @@ pool.on('error', function (err) {
 
 module.exports = {
     // get a reference to end the connection pool at server end, parse database into model
-    // users: users(pool),
-    // flights: flights(pool),
+    users: users(pool),
+    flights: flights(pool),
     pool:pool
   };
   
