@@ -1,7 +1,12 @@
+body {
+	font-family: 'Open Sans Condensed'!important;
+
+}
+
 main {
 	position: relative;
     top: 100px;
-    border-right: 1px solid rgb(158, 158, 158);
+	border-right: 1px solid rgb(158, 158, 158);
 }
 
 .topbar {
@@ -49,6 +54,9 @@ main {
 	color: white;
 	padding: 10px 15px;
 	border: none;
+	margin-left: 10px;
+	position: relative;
+	z-index: 2;
 }
 
 .openbtn:hover {
@@ -61,7 +69,6 @@ main {
 
 
 #mainContent {
-	padding-left: 10px;
 	margin-left: 400px;
     transition: margin-left .3s;
 }
@@ -117,11 +124,14 @@ div.flightDest {
 a.logoutbtn {
 	padding: 4px 30px;
 	background-color: #fff;
+	border-radius: 0!important;
+	border-color: #c2c2c2
 }
 
 a.logoutbtn:hover {
-	background-color: #82befd;
-	border: 1px solid rgb(177, 175, 175);
+	background-color: #fff;
+	border-style: dashed;
+	border: 1px solid rgb(107, 107, 107);
 }
 
 .header {
@@ -164,4 +174,14 @@ h4 {
 	font-family: 'Open Sans Condensed'!important;
 	padding-left: 10px;
 	padding-bottom: 3px;
+}
+
+div.maps {
+	position: relative;
+	top: -90px;
+	text-align: right;
+}
+
+div.eachmap {
+	background-color: #cfc1f8;
 }

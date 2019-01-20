@@ -17,7 +17,7 @@ render() {
                 Flighto-San
             </a>
             <span class="navbar-text">
-                <a href="#" class="btn btn-outline-secondary btn-sm logoutbtn">Logout</a>
+                <a href="/logout" class="btn btn-outline-secondary btn-sm logoutbtn">Logout</a>
             </span>
         </nav>
         <main>
@@ -41,7 +41,14 @@ render() {
                 ⇌
                 </button>
             {this.props.children}
-          
+            <div className="maps">
+                <div className="d-flex flex-column">
+                    <div className="p-2 eachmap">QTR332 EGKK  OTHH</div>
+                    <div className="p-2">Maps</div>
+                </div>
+            
+                </div>
+
             </div>
         </main>
             <script type="text/javascript" src="/script.js"/>

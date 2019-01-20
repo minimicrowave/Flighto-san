@@ -7,7 +7,7 @@ class Login extends React.Component {
         <html>
         <head>
             <link rel="stylesheet" type="text/css" href="/style.css"/>
-            <link href="https://fonts.googleapis.com/css?family=Unica+One|Zilla+Slab" rel="stylesheet"></link>
+            <link href="https://fonts.googleapis.com/css?family=Unica+One|Zilla+Slab|Open+Sans+Condensed:300" rel="stylesheet"></link>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
             <meta charset="UTF-8"/>
         </head>

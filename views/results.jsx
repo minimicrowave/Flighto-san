@@ -4,9 +4,11 @@ var Template = require("../views/template");
 
 class Results extends React.Component {
     render() {
-        if (this.props.flights.length > 0){
-            var flights = this.props.flights.map(eachFlight => {
-                if (eachFlight.estDepartureAirport !== null &&  eachFlight.estArrivalAirport !== null && eachFlight.icao24 !== null) {
+        var flights; 
+        if (this.props.flights[0] !== undefined){
+            flights = this.props.flights.map(eachFlight => {
+                console.log(eachFlight.callsign);
+                if (eachFlight.estDepartureAirport !== null &&  eachFlight.estArrivalAirport !== null && eachFlight.icao24 !== null && eachFlight.callsign !==null) {
                     return (
                     <tr>
                         <td>
@@ -20,10 +22,10 @@ class Results extends React.Component {
                         </td>
                     </tr>)
 
-                }
+                } 
             });
         } else {
-            var flights = (
+            flights = (
                 <tr>
                     <td>
     
@@ -31,7 +33,18 @@ class Results extends React.Component {
                 </td>
             </tr>)
 
-            }
+        }
+
+        console.log("yoohoo", flights);
+        if (flights.filter(word => word !== undefined).length ===0) {
+            flights = (
+                <tr>
+                    <td>
+    
+                    Oh no, no result for this flight found. Please try again.
+                </td>
+            </tr>)
+        }
         
 
         
@@ -39,7 +52,6 @@ class Results extends React.Component {
             <React.Fragment>
                 <script type="text/javascript" src="/scriptForm.js"/>
                 <Template results={flights}>
-                    <p>hi xD</p>
                 </Template>
             </React.Fragment>
         );

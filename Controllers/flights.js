@@ -17,7 +17,7 @@ module.exports = (db) => {
         if (flightNo === "") {
             axios.get(`https://minimicrowave:inyourdreams@opensky-network.org/api/flights/all?begin=${timeTwoHAgo}&end=${timeNow}`).then(result => {
                 results = result.data.splice(0, 61);
-                console.log(results)
+                // console.log(results)
             }).then(() => {
                 response.render('../views/results.jsx', {
                     flights: results
@@ -25,21 +25,24 @@ module.exports = (db) => {
             })
         } else {
             axios.get(`https://minimicrowave:inyourdreams@opensky-network.org/api/flights/all?begin=${timeTwoHAgo}&end=${timeNow}`).then(result => {
-                results = result.data.find(element => {
-                    // deletes all spaces
-                    console.log(element);
-                    var callsign;
-                    if (callsign !== null){
-                        callsign = element.callsign.replace(/\s+/g, '');
-                    }
-                    if (callsign=== flightNo.toUpperCase()) {
-                        return element;
-                    }
-                });
+    
+                    results = result.data.filter(element => {
+                        if (element.callsign !== null){
+                            var callsign;
+                            // deletes all spaces
+                            callsign = element.callsign.replace(/\s+/g, '');
+                            if (callsign.includes(flightNo.toUpperCase())) {
+                                return element;
+                            }
+                        } else {
+                            return [null];
+                        }
+                    });
+    
                 console.log(results);
             }).then(() => {
                 response.render('../views/results.jsx', {
-                    flights: [results]
+                    flights: results
                 });
             })
 

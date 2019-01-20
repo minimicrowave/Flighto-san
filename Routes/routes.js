@@ -4,8 +4,12 @@ module.exports = (app, db) => {
     
     app.get('/', users.redirect);
     app.get('/login', users.login);
+    app.get('/register', users.register);
     app.get('/home', users.home);
+    app.get('/logout', users.logout);
 
+    app.post('/login', users.registerpost);
+    app.post('/home', users.loginpost);
     app.post('/home/search', flights.form);
     app.post('/home/search/maps', flights.maps);
 
