@@ -125,7 +125,9 @@ a.logoutbtn {
 	padding: 4px 30px;
 	background-color: #fff;
 	border-radius: 0!important;
-	border-color: #c2c2c2
+	border-color: #c2c2c2;
+	margin-left:5px;
+
 }
 
 a.logoutbtn:hover {
@@ -176,7 +178,7 @@ h4 {
 	padding-bottom: 3px;
 }
 
-div.maps {
+#mapdiv {
 	position: relative;
 	top: -90px;
 	text-align: right;
@@ -184,4 +186,25 @@ div.maps {
 
 div.eachmap {
 	background-color: #cfc1f8;
+}
+
+.modal-backdrop {
+    z-index: 1020;
+}
+
+h6 {
+	display: inline;
+	margin-right: 10px;
+	font-size: 20px!important;
+	vertical-align: middle;
+}
+
+div.mapcontainer {
+	height: 350px;
+}
+
+div.mapdiv {
+	height: 90%;
+	min-height: 90%;
+	padding: 0;
 }

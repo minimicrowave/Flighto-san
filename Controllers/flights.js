@@ -51,17 +51,22 @@ module.exports = (db) => {
 
     const maps = (request, response) => {   
         var icaoNo = (request.body.flight).replace(/\s+/g, '');
-        var user = request.cookies['user'];
+        var userid = request.cookies['userid'];
+        console.log(icaoNo, userid);
 
-        axios.get(`https://minimicrowave:inyourdreams@opensky-network.org/api/tracks/all?icao24=${icaoNo}&time=0`).then(result => {
-            // console.log(result.data);
-                db.users.addFlights(icaoNo, user, (error, queryResult) => {
-                    console.log(queryResult.flightno);
-                    // var flights = response.cookie
-                })
+        db.users.addFlights(icaoNo, userid, (error, queryResult) => {
+            console.log("hi", queryResult)
+            let result = queryResult.map(eachResult => {
+                return eachResult.flightno;
+            })
+            
+            let allmaps = result.toString();
+            console.log(allmaps);
 
-
+            response.cookie('maps', maps);
+            response.redirect('/home');
         })
+
             
         
     }

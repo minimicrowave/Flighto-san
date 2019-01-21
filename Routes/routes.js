@@ -8,9 +8,12 @@ module.exports = (app, db) => {
     app.get('/home', users.home);
     app.get('/logout', users.logout);
 
+    app.put('/profile/edit', users.edit);
+
     app.post('/login', users.registerpost);
     app.post('/home', users.loginpost);
     app.post('/home/search', flights.form);
-    app.post('/home/search/maps', flights.maps);
+    app.post('/home/maps', flights.maps);
+
 
 }

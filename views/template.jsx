@@ -17,6 +17,9 @@ render() {
                 Flighto-San
             </a>
             <span class="navbar-text">
+                <h6 id="name"></h6>
+                <a class="btn btn-outline-secondary btn-sm logoutbtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Edit Profile</a>
+
                 <a href="/logout" class="btn btn-outline-secondary btn-sm logoutbtn">Logout</a>
             </span>
         </nav>
@@ -41,18 +44,47 @@ render() {
                 ⇌
                 </button>
             {this.props.children}
-            <div className="maps">
-                <div className="d-flex flex-column">
+            <div id="mapdiv">
+                {/* <div className="d-flex flex-column">
                     <div className="p-2 eachmap">QTR332 EGKK  OTHH</div>
                     <div className="p-2">Maps</div>
-                </div>
+                </div> */}
             
-                </div>
+            </div>
 
             </div>
         </main>
             <script type="text/javascript" src="/script.js"/>
+            <script type="text/javascript" src="/scriptMaps.js"/>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaQfI1KG7e34IftdKC6ysqKP0zUKugaFc"></script>
         </body>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/profile/edit?_method=PUT" method="POST"> 
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">New Name:</label>
+                        <input name="newname" type="text" class="form-control" id="recipient-name"/>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info">Save Changes</button>
+                </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
         </html>
     );
 }

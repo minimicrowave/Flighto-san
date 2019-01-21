@@ -12,7 +12,7 @@ class Results extends React.Component {
                     return (
                     <tr>
                         <td>
-                        <form className="flightadd" method="POST" action="search/maps">
+                        <form className="flightadd" method="POST" action="/home/maps">
                             <button name="flight" className="addButton" type="submit" value={eachFlight.icao24}>+</button>
                             <div className="flightNo">{eachFlight.callsign}</div>
                             <div className="flightDest">
@@ -50,7 +50,6 @@ class Results extends React.Component {
         
         return (
             <React.Fragment>
-                <script type="text/javascript" src="/scriptForm.js"/>
                 <Template results={flights}>
                 </Template>
             </React.Fragment>
