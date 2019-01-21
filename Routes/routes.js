@@ -15,5 +15,6 @@ module.exports = (app, db) => {
     app.post('/home/search', flights.form);
     app.post('/home/maps', flights.maps);
 
+    app.delete('/home/maps/delete', flights.del);
 
 }

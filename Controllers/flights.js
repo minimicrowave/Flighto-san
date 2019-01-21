@@ -67,13 +67,23 @@ module.exports = (db) => {
             response.redirect('/home');
         })
 
-            
+    }
+
+    const del = (request, response) => {
+        let icao = request.body.flighticao;
+        let id = request.cookies['userid'];
         
+        db.flights.delFlights(icao, id, (error, queryResult) => {
+            response.redirect('/home');
+        })
+
+
     }
 
     // Export controller functions as a module
     return {
         form,
-        maps
-    };
+        maps,
+        del
+    }
 }

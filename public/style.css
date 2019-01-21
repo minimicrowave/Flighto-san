@@ -20,7 +20,7 @@ main {
 	z-index: 1;
 	top: 10px;
 	left: 0;
-	background-color: rgb(152, 185, 246);
+	background-color: rgb(145, 174, 192);
 	overflow-x: hidden;
 	padding-top: 60px;
 	transition: 0.1s;
@@ -50,17 +50,17 @@ main {
 .openbtn {
 	font-size: 20px;
 	cursor: pointer;
-	background-color: rgb(195, 195, 195);
+	background-color: rgba(195, 195, 195, 0.486);
 	color: white;
 	padding: 10px 15px;
-	border: none;
+	border: 1px solid white;
 	margin-left: 10px;
-	position: relative;
+	position: fixed;
 	z-index: 2;
 }
 
 .openbtn:hover {
-	background-color: rgb(152, 185, 246);
+	background-color: rgb(145, 174, 192);
 }
 
 .openbtnimg {
@@ -180,12 +180,12 @@ h4 {
 
 #mapdiv {
 	position: relative;
-	top: -90px;
+	top: -40px;
 	text-align: right;
 }
 
 div.eachmap {
-	background-color: #cfc1f8;
+	background-color: #ffffff;
 }
 
 .modal-backdrop {
@@ -200,11 +200,23 @@ h6 {
 }
 
 div.mapcontainer {
-	height: 350px;
+	height: 400px;
+	border-bottom: 2px solid grey;
 }
 
 div.mapdiv {
 	height: 90%;
 	min-height: 90%;
 	padding: 0;
+}
+
+button.crossbutton {
+	border-radius: 0!important;
+	margin-top: 3px;
+	margin-left: 10px;
+	padding: 5px 10px;
+}
+
+form.flightdel {
+	display: inline;
 }

@@ -66,7 +66,7 @@ function drawMap(obj, count) {
 
     let maptitle = document.createElement('div');
     maptitle.className = "p-2 eachmap";
-    maptitle.innerHTML = `<img class="planeicon" src="/airplane_icon.png"> ` + obj.callsign;
+    maptitle.innerHTML = `<img class="planeicon" src="/airplane_icon.png"> ` + obj.callsign + `<form class="flightdel" method="POST" action="/home/maps/delete?_method=DELETE"><button href="#" name="flighticao" value="${obj.icao24}"type="submit" class="btn btn-outline-secondary btn-sm crossbutton">&times;</button></form>`;
 
     let googlemap = document.createElement('div');
     googlemap.className = "mapdiv";
@@ -77,11 +77,17 @@ function drawMap(obj, count) {
     mapdiv.appendChild(eachMap);
 
     let flightcoor = obj.path.map(coord => {
-        return ({lat: coord[1], lng:coord[2]})
+        return ({
+            lat: coord[1],
+            lng: coord[2]
+        })
     })
-    
-    let lastlocalinfo = obj.path[obj.path.length-1];
-    let lastlocalcoor = {lat: lastlocalinfo[1], lng: lastlocalinfo[2]};
+
+    let lastlocalinfo = obj.path[obj.path.length - 1];
+    let lastlocalcoor = {
+        lat: lastlocalinfo[1],
+        lng: lastlocalinfo[2]
+    };
     console.log(lastlocalcoor);
 
     initMap(count, flightcoor, lastlocalcoor);
@@ -113,6 +119,7 @@ async function retrieveMaps() {
             });
     }
     console.log(failedCodes)
+
 }
 
 function initMap(count, flightcoor, lastlocalcoor) {
@@ -127,10 +134,26 @@ function initMap(count, flightcoor, lastlocalcoor) {
     var flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,
         geodesic: true,
-        strokeColor: '#FF0000',
+        strokeColor: '#80001C',
         strokeOpacity: 1.0,
         strokeWeight: 2
     });
 
-    flightPath.setMap(map);
+    var plane = {
+        image: 'plane-icon-up.png',
+        rotation: 130,
+        id: 'hi'
+    }
+    
+    var marker = new google.maps.Marker({
+        position: lastlocalcoor,
+        map: map,
+        // rotation: 132,
+        icon: plane,
+        id: 'ho',
+      });
+
+   
+
+    flightPath.setMap(map)
 }
