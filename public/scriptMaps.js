@@ -94,6 +94,19 @@ function drawMap(obj, count) {
 
 }
 
+function drawFailedMap(arr) {
+    for (let failed of arr){
+        let mapdiv = document.querySelector('#mapdiv')
+        
+        let maptitle = document.createElement('div');
+        maptitle.className = "p-2 failedmaps";
+        maptitle.innerHTML = `<img class="planeicon" src="/airplane_icon.png"> ` + `Error: Flight Code ${failed} is either inactive or not found.` + `<form class="flightdel" method="POST" action="/home/maps/delete?_method=DELETE"><button href="#" name="flighticao" value="${failed}"type="submit" class="btn btn-outline-secondary btn-sm crossbutton">&times;</button></form>`;
+
+        mapdiv.appendChild(maptitle);
+    }
+
+}
+
 async function retrieveMaps() {
     for (let map of allMaps) {
         // retrieve API data
@@ -118,8 +131,8 @@ async function retrieveMaps() {
 
             });
     }
-    console.log(failedCodes)
-
+    console.log(`failed flights: `, failedCodes)
+    drawFailedMap(failedCodes);
 }
 
 function initMap(count, flightcoor, lastlocalcoor) {
@@ -148,9 +161,7 @@ function initMap(count, flightcoor, lastlocalcoor) {
     var marker = new google.maps.Marker({
         position: lastlocalcoor,
         map: map,
-        // rotation: 132,
-        icon: plane,
-        id: 'ho',
+        icon: 'plane-icon-up.png'
       });
 
    

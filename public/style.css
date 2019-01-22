@@ -200,7 +200,7 @@ h6 {
 }
 
 div.mapcontainer {
-	height: 400px;
+	height: 440px;
 	border-bottom: 2px solid grey;
 }
 
@@ -219,4 +219,9 @@ button.crossbutton {
 
 form.flightdel {
 	display: inline;
+}
+
+div.failedmaps {
+	background-color: rgb(243, 119, 119);
+	border-top: 1px solid white;
 }
