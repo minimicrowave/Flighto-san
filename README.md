@@ -4,7 +4,7 @@ _Flighto-San_
 * Your personlised flight tracker.
 
 Tired of firing multiple tabs or windows to track multiple flights? 
-flighto-san gives you the convenience of rounding them up on one page! 
+Flighto-san gives you the convenience of rounding them up on one page! 
 
 ## Features
 
@@ -16,7 +16,7 @@ flighto-san gives you the convenience of rounding them up on one page!
 
 Clone the repository and fire up nodemon on your cmd line and proceed to localhost to start your journey!
 
-```git clone https://github.com/minimicrowave/project-2.git ```
+```git clone https://github.com/minimicrowave/Project-2```
 
 
 ## Technologies 
