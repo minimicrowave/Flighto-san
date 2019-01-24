@@ -24,6 +24,6 @@ Clone the repository and fire up nodemon on your cmd line and proceed to localho
 - Javascript
 - ReactJS
 - Nodemon
-- PSQL
-- CSs & Bootstrap
-- hTML
+- SQL
+- CSS & Bootstrap
+- HTML
