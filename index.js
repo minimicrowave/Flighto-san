@@ -34,7 +34,7 @@ let onClose = function(){
 
   server.close(() => {
     console.log('Process terminated')
-    pool.end( () => console.log('Shut down db connection pool'));
+    db.pool.end( () => console.log('Shut down db connection pool'));
   })
 };
 
