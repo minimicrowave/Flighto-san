@@ -50,7 +50,7 @@ module.exports = (db) => {
         
         db.users.checkUser(values, (error, queryResult) => {
             console.log(queryResult);
-            if (queryResult.length === 0) {
+            if (queryResult.length === 0)d {
                 response.cookie('loggedin', false);
                 response.redirect('/login');
             } else {

@@ -17,9 +17,10 @@ module.exports = (dbPoolInstance) => {
         checkUser: (userInfo, callback) => {
             const queryString = 'SELECT * FROM users WHERE username=$1 AND password=$2;';
             const values = userInfo;
-            // console.log(queryString, values);
+            console.log(queryString, values);
 
             dbPoolInstance.query(queryString, values, (error, queryResult) => {
+                console.log(queryResult, error);
                 callback(error, queryResult.rows);
             })
         },
