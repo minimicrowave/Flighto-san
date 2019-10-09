@@ -1,7 +1,7 @@
 # Project-2
 
 _Flighto-San_
-* Your personlised flight tracker.
+* Your personalised flight tracker.
 
 Tired of firing multiple tabs or windows to track multiple flights? 
 Flighto-san gives you the convenience of rounding them up into one page! 
