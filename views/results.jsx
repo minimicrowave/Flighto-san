@@ -5,7 +5,7 @@ var Template = require("../views/template");
 class Results extends React.Component {
     render() {
         var flights; 
-        if (this.props.flights[0] !== undefined){
+        if (this.props.flights[0] !== undefined || this.props.flights.length === 0){
             flights = this.props.flights.map(eachFlight => {
                 console.log(eachFlight.callsign);
                 if (eachFlight.estDepartureAirport !== null &&  eachFlight.estArrivalAirport !== null && eachFlight.icao24 !== null && eachFlight.callsign !==null) {
