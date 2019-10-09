@@ -1,89 +1,103 @@
 const axios = require("axios");
 
+module.exports = db => {
+  const form = (request, response) => {
+    var flightNo = request.body.flightNo;
+    console.log(flightNo);
+    var results;
 
-module.exports = (db) => {
+    // round down to nearest hour for API data extraction
+    var timeNow = parseInt(new Date().getTime() / 1000);
+    // get current epoch time
+    timeNow = timeNow - (timeNow % 3600) - 3600;
+    var timeTwoHAgo = timeNow - 120 * 60;
 
-    const form = (request, response) => {
-        var flightNo = request.body.flightNo;
-        var results;
-
-        // round down to nearest hour for API data extraction
-        var timeNow = parseInt(((new Date).getTime()) / 1000);
-        // get current epoch time
-        timeNow = (timeNow - (timeNow % 3600)) - 3600;
-        var timeTwoHAgo = timeNow - (120 * 60);
-        
-        //  get all of the most recent flights available
-        if (flightNo === "") {
-            axios.get(`https://minimicrowave:inyourdreams@opensky-network.org/api/flights/all?begin=${timeTwoHAgo}&end=${timeNow}`).then(result => {
-                results = result.data.splice(0, 61);
-                // console.log(results)
-            }).then(() => {
-                response.render('../views/results.jsx', {
-                    flights: results
-                });
-            })
-        } else {
-            axios.get(`https://minimicrowave:inyourdreams@opensky-network.org/api/flights/all?begin=${timeTwoHAgo}&end=${timeNow}`).then(result => {
-    
-                    results = result.data.filter(element => {
-                        if (element.callsign !== null){
-                            var callsign;
-                            // deletes all spaces
-                            callsign = element.callsign.replace(/\s+/g, '');
-                            if (callsign.includes(flightNo.toUpperCase())) {
-                                return element;
-                            }
-                        } else {
-                            return [null];
-                        }
-                    });
-    
-                console.log(results);
-            }).then(() => {
-                response.render('../views/results.jsx', {
-                    flights: results
-                });
-            })
-
-        }        
-    }
-
-    const maps = (request, response) => {   
-        var icaoNo = (request.body.flight).replace(/\s+/g, '');
-        var userid = request.cookies['userid'];
-        console.log(icaoNo, userid);
-
-        db.users.addFlights(icaoNo, userid, (error, queryResult) => {
-            console.log("hi", queryResult)
-            let result = queryResult.map(eachResult => {
-                return eachResult.flightno;
-            })
-            
-            let allmaps = result.toString();
-            console.log(allmaps);
-
-            response.cookie('maps', maps);
-            response.redirect('/home');
+    //  get all of the most recent flights available
+    if (flightNo === "") {
+      axios
+        .get(
+          `https://minimicrowave:inyourdreams@opensky-network.org/api/flights/all?begin=${timeTwoHAgo}&end=${timeNow}`
+        )
+        .then(result => {
+          console.log("RESULT", result);
+          results = result.data.splice(0, 61);
         })
-
-    }
-
-    const del = (request, response) => {
-        let icao = request.body.flighticao;
-        let id = request.cookies['userid'];
-        
-        db.flights.delFlights(icao, id, (error, queryResult) => {
-            response.redirect('/home');
+        .then(() => {
+          response.render("../views/results.jsx", {
+            flights: results
+          });
         })
+        .catch(() =>
+          response.render("../views/results.jsx", {
+            flights: []
+          })
+        );
+    } else {
+      axios
+        .get(
+          `https://minimicrowave:inyourdreams@opensky-network.org/api/flights/all?begin=${timeTwoHAgo}&end=${timeNow}`
+        )
+        .then(result => {
+          results = result.data.filter(element => {
+            if (element.callsign !== null) {
+              var callsign;
+              // deletes all spaces
+              callsign = element.callsign.replace(/\s+/g, "");
+              if (callsign.includes(flightNo.toUpperCase())) {
+                return element;
+              }
+            } else {
+              return [null];
+            }
+          });
 
-
+          console.log(results);
+        })
+        .then(() => {
+          response.render("../views/results.jsx", {
+            flights: results
+          });
+        })
+        .catch(() =>
+          response.render("../views/results.jsx", {
+            flights: []
+          })
+        );
     }
+  };
 
-    // Export controller functions as a module
-    return {
-        form,
-        maps,
-        del
-    }
-}
+  const maps = (request, response) => {
+    var icaoNo = request.body.flight.replace(/\s+/g, "");
+    var userid = request.cookies["userid"];
+    console.log(icaoNo, userid);
+
+    db.users.addFlights(icaoNo, userid, (error, queryResult) => {
+      console.log("hi", queryResult);
+      let result = queryResult.map(eachResult => {
+        return eachResult.flightno;
+      });
+
+      let allmaps = result.toString();
+      console.log(allmaps);
+
+      response.cookie("maps", maps);
+      response.redirect("/home");
+    });
+  };
+
+  const del = (request, response) => {
+    let icao = request.body.flighticao;
+    let id = request.cookies["userid"];
+
+    db.flights.delFlights(icao, id, (error, queryResult) => {
+      response.redirect("/home");
+    });
+  };
+
+  // Export controller functions as a module
+  return {
+    form,
+    maps,
+    del
+  };
+};
